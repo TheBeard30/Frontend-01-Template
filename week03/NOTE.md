@@ -1,6 +1,5 @@
 # 每周总结可以写在这里
-
-js中特殊对象
+## js中特殊对象
 Function Object
 
     call 视为函数Function
