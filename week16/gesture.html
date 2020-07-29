@@ -1,0 +1,31 @@
+<body>
+  <div id="my" style="width: 400px; height: 400px; background-color: pink"></div>
+</body>
+
+<script src="./gusture.js">
+</script>
+
+<script>
+  window.addEventListener('contextmenu', event => event.preventDefault());
+  document.addEventListener('selectstart', event => event.preventDefault());
+  document.addEventListener('touchmove', event => event.preventDefault(), { passive: false });
+
+  let my = document.getElementById('my');
+  enableGesture(my)
+
+  let x = 0, y = 0;
+
+
+  my.addEventListener('panMove', event => {
+    const { detail } = event;
+    let translateX = (x + detail.clientX - detail.startX);
+    let translateY = (y + detail.clientY - detail.startY);
+    my.style.transform = `translate(${translateX}px, ${translateY}px)`
+  })
+
+  my.addEventListener('panEnd', event => {
+    const { detail } = event;
+    x = (x + detail.clientX - detail.startX);
+    y = (y + detail.clientY - detail.startY);
+  })
+</script>
